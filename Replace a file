@@ -1,0 +1,37 @@
+Now, let's replace .git-keep with a CSS file and update index.html to reference it.
+
+Delete .git-keep from the CSS subdirectory:
+
+Bash
+
+Copy
+rm CSS/.git-keep
+Use the built-in editor to create a file named site.css in the CSS subdirectory:
+
+Bash
+
+Copy
+cd CSS
+code site.css
+Add the following CSS to the file. Then, save and close the file.
+
+css
+
+Copy
+h1, h2, h3, h4, h5, h6 { font-family: sans-serif; }
+body { font-family: serif; }
+Now, add the following line to index.html (don't forget to go back up to the Cats directory) after the <title> line, and save the modified file:
+
+HTML
+
+Copy
+<link rel="stylesheet" href="CSS/site.css">
+Use git status to see a summary of the files that have changed. Then, use the following commands to stage untracked files to version control and commit your changes to site.css and index.html:
+
+Bash
+
+Copy
+git add .
+git commit -m "Add a simple stylesheet"
+Unlike most VCSes, Git records the contents of your files rather than the deltas (changes) between them. That's a large part of what makes committing, branching, and switching between branches so fast in Git. Other VCSes have to apply a list of changes to get between one version of a file and another. Git just unzips the other version.
+
