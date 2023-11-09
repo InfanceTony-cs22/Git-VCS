@@ -1,0 +1,28 @@
+Most websites use HTML and CSS style sheets, and the site you're building is no exception. Style sheets typically are stored in a subdirectory, so let's create a subdirectory named CSS and add it to the repo.
+
+Begin by creating a subdirectory named CSS in the project directory:
+
+Bash
+
+Copy
+mkdir CSS
+Then, do a git status:
+
+Bash
+
+Copy
+git status
+Why does Git report that there's nothing to commit?
+
+People often are surprised to learn that Git doesn't consider adding an empty directory to be a change. That's because Git tracks only changes to files, not changes to directories.
+
+Sometimes, especially in the initial stages of development, you want to have empty directories as placeholders. A common convention is to create an empty file, often called .git-keep, in a placeholder directory.
+
+Use the following commands to create an empty file with that name in the CSS subdirectory and add the contents of the subdirectory to the index:
+
+Bash
+
+Copy
+touch CSS/.git-keep
+git add CSS
+Follow up by using git status again to check the status of the repo. Confirm that it reports one new file.
