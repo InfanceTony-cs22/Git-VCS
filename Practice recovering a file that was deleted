@@ -1,0 +1,44 @@
+When you want to recover deleted files, things are a little more complicated if you delete them by using git rm instead of by using rm.
+
+To see what happens, try this command:
+
+Bash
+
+Copy
+git rm index.html
+Again, look for index.html by running ls. You should not see index.html.
+
+Try to recover index.html the same way that you did last time:
+
+Bash
+
+Copy
+git checkout -- index.html
+This time, Git complains that it knows nothing about index.html. That's because Git not only deleted the file, it recorded the deletion in the index:
+
+Output
+
+Copy
+error: pathspec 'index.html' did not match any file(s) known to git.
+Unstage the deletion of index.html with the git reset command:
+
+Bash
+
+Copy
+git reset HEAD index.html
+Check for this output, which confirms it:
+
+Output
+
+Copy
+Unstaged changes after reset:
+D       index.html
+Now, you can recover your file from the index with the command you used before:
+
+Bash
+
+Copy
+git checkout -- index.html
+git reset unstaged the change, but the file was still deleted, so you had to use checkout to get it back.
+
+Double-check that it worked by running ls.
