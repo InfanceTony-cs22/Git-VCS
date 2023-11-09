@@ -1,0 +1,26 @@
+Sometimes, things go wrong. You might forget to add a new file, or maybe you add a file by mistake. Perhaps you made a spelling error in your latest commit or you committed something you didn't intend to. Perhaps you accidentally deleted a file.
+
+Git lets you make changes fearlessly, because it always offers a way to get back to where you were. You can even change Git's commit history as long as you only change commits that haven't been shared.
+
+Amend a commit: --amend flag
+In the preceding exercise, you updated the index.html file to modify the path to the style sheet. You should have added the following statement:
+
+HTML
+
+Copy
+<link rel="stylesheet" href="CSS/site.css">
+Suppose you discover that you made an error when you entered the statement. Instead of specifying the folder path as CSS, you entered CS:
+
+HTML
+
+Copy
+<link rel="stylesheet" href="CS/site.css">
+When you refresh the page in your browser, you notice that your CSS style sheet isn't applied. After you investigate, you realize that you entered the path values incorrectly.
+
+So, you update index.html with the correct path to the style sheet. At this point, you could just commit the corrected version of index.html, but instead, you prefer to put it in the same commit as the original. The --amend option to git commit lets you change history (and how often does one get the chance to change history?).
+
+Bash
+
+Copy
+git commit --amend --no-edit
+The --no-edit option tells Git to make the change without changing the commit message. You can also use --amend to edit a commit message, to add files that were accidentally left out of the commit, or to remove files that were added by mistake.
