@@ -1,0 +1,34 @@
+First, try deleting index.html:
+
+Bash
+
+Copy
+rm index.html
+It might seem like a bad idea, but remember: Git has your back!
+
+Use an ls command to verify that index.html was deleted:
+
+Bash
+
+Copy
+ls
+You should see the following output. Note that now, there's no index.html file!
+
+Output
+
+Copy
+CSS
+Let's recover index.html. Use git checkout to bring back index.html:
+
+Bash
+
+Copy
+git checkout -- index.html
+Use ls again to check the contents of the current directory. Has index.html been restored?
+
+Yes! Now, the output should have an index.html file and a CSS directory:
+
+Output
+
+Copy
+CSS  index.html
