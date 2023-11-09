@@ -1,0 +1,13 @@
+Imagine that you made a change to a source code file that broke the entire project, so you want to revert to the previous version of that file. Or perhaps you accidentally deleted a file altogether. Git makes it easy to retrieve an earlier version, even if the current version no longer exists. Your best friend in this situation is the git checkout command.
+
+git checkout has multiple uses, but in the next exercise, we'll use it to recover a deleted file. git checkout updates files in the working tree to match the version in the index or in the specified tree.
+
+If you've accidentally deleted a file, you can recover it by bringing the version from the index back into the working tree by using this command:
+
+Bash
+
+Copy
+git checkout -- <file_name>
+You can also check out a file from an earlier commit (typically, the head of another branch), but the default is to get the file from the index. The -- in the argument list serves to separate the commit from the list of file paths. It's not strictly needed in this case, but if you had a branch named <file_name> (perhaps because that's the name of the file being worked on in that branch), -- would prevent Git from getting confused.
+
+Later, you'll learn that you also use checkout to switch branches.
