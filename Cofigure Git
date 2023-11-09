@@ -1,0 +1,16 @@
+In Cloud Shell, to double-check that Git is installed, type git --version:
+
+
+To configure Git, you must define some global variables: user.name and user.email. Both are required for you to make commits.
+
+
+Set your name in Cloud Shell with the following command. Replace <USER_NAME> with the user name you want to use.
+          git config --global user.name "<USER_NAME>"
+
+Now, use this command to create a user.email configuration variable, replacing <USER_EMAIL> with your e-mail address:
+          git config --global user.email "<USER_EMAIL>"
+
+
+Run the following command to check that your changes worked:
+           git config --list
+
