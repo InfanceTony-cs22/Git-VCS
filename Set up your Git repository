@@ -1,0 +1,17 @@
+Create a folder named Cats. This folder will be the project directory, also called the working tree. The project directory is where all files related to your project are stored. In this exercise, it's where your website and the files that create the website and its contents are stored.
+          mkdir Cats
+
+
+Change to the project directory by using the cd command:
+          cd Cats
+
+Now, initialize your new repository and set the name of the default branch to main:
+
+If you're running Git version 2.28.0 or later, use the following command:
+          git init --initial-branch=main
+Or use the following command:
+          git init -b main
+
+git status
+
+ls -a
