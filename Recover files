@@ -1,0 +1,27 @@
+You also can delete a file by using git rm. This command deletes the file on your disk, but it also has Git record the file deletion in the index.
+
+So, if you ran this command:
+
+Bash
+
+Copy
+git rm index.html
+git checkout -- index.html
+Git would not happily restore index.html! Instead, you'd get an error like this example:
+
+Output
+
+Copy
+error: pathspec 'index.html' did not match any file(s) known to git.
+To recover index.html, we would have to use a different technique: git reset. You can use git reset to unstage changes.
+
+You could recover index.html by using these two commands:
+
+Bash
+
+Copy
+git reset HEAD index.html
+git checkout -- index.html
+Here, git reset unstages the file deletion from Git. This command brings the file back to the index, but the file is still deleted on disk. You can then restore it to the disk from the index by using git checkout.
+
+Here's another "Aha!" moment for new Git users. Many VCSes make files read-only to ensure that only one person at a time can make changes; users use an unrelated checkout command to get a writable version of the file. They also use checkin for an operation similar to what Git does with a combination of add, commit, and push. This fact occasionally causes confusion when people begin to use Git.
