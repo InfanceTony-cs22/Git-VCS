@@ -1,0 +1,80 @@
+Return to the Bob directory, and run the following command to create a branch named add-cat. Use the popular checkout -b option to create the branch and switch to it in a single command.
+
+Bash
+
+Copy
+cd ../Bob
+git checkout -b add-cat
+
+Download the zip file that contains some website resources. Then, unzip the resource files:
+
+Bash
+
+Copy
+wget https://github.com/MicrosoftDocs/mslearn-branch-merge-git/raw/main/git-resources.zip
+unzip git-resources.zip
+
+Now, move the bobcat2-317x240.jpg file into Bob's Assets directory. Delete the other files. You'll download the files and use them again later.
+
+Bash
+
+Copy
+mv bobcat2-317x240.jpg Assets/bobcat2-317x240.jpg
+rm git-resources.zip
+rm bombay-cat-180x240.jpg
+
+Next, open the index.html file and replace the line that says "Eventually we will put cat pictures here" with the following line:
+
+HTML
+
+Copy
+<img src="Assets/bobcat2-317x240.jpg" />
+Save the file, and close the editor.
+
+You've made two changes to Bob's add-cat branch — you added one file and modified another. Run git status to double-check your changes:
+
+Bash
+
+Copy
+git status
+
+Then, run the following commands to add the new file in the Assets directory to the index and commit all changes:
+
+Bash
+
+Copy
+git add .
+git commit -a -m "Add picture of Bob's cat"
+
+Bob now does the same action that Alice did earlier. Bob switches back to the main branch, and executes a pull to see if anything has changed:
+
+Bash
+
+Copy
+git checkout main
+git pull
+
+Check the output. This time, the output indicates that changes have been made to the main branch in the shared repo (the result of Alice's push). It also indicates that the changes pulled from main in the shared repo have been merged with main in Bob's repo:
+
+Output
+
+Copy
+remote: Counting objects: 4, done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 4 (delta 1), reused 0 (delta 0)
+Unpacking objects: 100% (4/4), done.
+From D:/Labs/Git/Bob/../Shared
+   e81ae09..1d2bfea  main     -> origin/main
+Updating e81ae09..1d2bfea
+Fast-forward
+ Assets/site.css | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+Next, Bob merges their branch into the main branch so that main in their repo will have their changes and Alice's changes. Then, Bob pushes main on their computer to the main branch in the shared repo:
+
+Bash
+
+Copy
+git merge add-cat --no-edit
+git push
+
+Bob didn't use the --ff-only flag because they knew that main had changed. A fast-forward only merge would have failed.
