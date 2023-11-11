@@ -1,0 +1,13 @@
+At this point, Bob has an up-to-date repo, but Alice doesn't. Alice needs to do a git pull from the shared repo to make sure they have the latest and greatest version of the site.
+
+Run the following commands to sync Alice's repo with the shared repo:
+
+Bash
+
+Copy
+cd ../Alice
+git pull
+
+Take a moment to verify that Alice's repo and Bob's repo are synced. Each of the repos should have a JPG file in the Assets directory, and an <img> element declared in the index.html file. The site.css file in each repo's Assets folder should contain a line that defines a CSS style named cat. This style was added by Alice when they made their changes.
+
+If you open index.html in a browser, you'll see this image:
