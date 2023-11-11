@@ -1,0 +1,41 @@
+Create a new directory named Shared.git to hold the bare repo:
+
+Bash
+
+Copy
+mkdir Shared.git
+cd Shared.git
+
+Now, run the following command to create a bare repo in the shared directory:
+
+Bash
+
+Copy
+git init --bare
+
+Set the name of the default branch for the new repo. To accomplish this step, you can change the HEAD branch to point at a different branch; in this case, the main branch:
+
+Bash
+
+Copy
+git symbolic-ref HEAD refs/heads/main
+
+Clone the shared repo for Bob
+Move up one level from this directory and create a directory for Bob to store his repo:
+
+Bash
+
+Copy
+cd ..
+mkdir Bob
+
+Clone and configure the repo for Bob:
+
+Bash
+
+Copy
+cd Bob
+git clone ../Shared.git .
+git config user.name Bob
+git config user.email bob@contoso.com
+git symbolic-ref HEAD refs/heads/main
