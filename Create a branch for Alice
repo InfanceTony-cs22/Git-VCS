@@ -1,0 +1,69 @@
+Alice wants to create a topic branch named add-style to do their work in. Let's assume the role of Alice, and then create the branch and add some code to this branch.
+
+Move up one level from this directory, and create a directory for Alice for their copy of the repo:
+
+Bash
+
+Copy
+cd ..
+mkdir Alice
+
+Clone the repo for Alice, and then configure it:
+
+Bash
+
+Copy
+cd Alice
+git clone ../Shared.git .
+git config user.name Alice
+git config user.email alice@contoso.com
+
+You now have a current copy of the repository. To confirm, you can list the file contents and run git status to confirm the state of the repository.
+
+Bash
+
+Copy
+ls
+git status
+
+Run the git branch command to create a branch named add-style. Then, run the git checkout command to switch to that branch (make it the current branch).
+
+Bash
+
+Copy
+git branch add-style
+git checkout add-style
+
+In the Alice/Assets directory, open site.css. Add the following CSS class definition to the bottom of the file:
+
+css
+
+Copy
+.cat { max-width: 40%; padding: 5 }
+Save the changes to the file, and close the editor.
+
+Commit the change:
+
+Bash
+
+Copy
+git commit -a -m "Add style for cat pictures"
+
+At this point, Alice wants to make their style available to everyone else, so they switch back to main and do a pull in case anyone else has made changes:
+
+Bash
+
+Copy
+git checkout main
+git pull
+
+The output says that the main branch is up to date (in other words, main on Alice's computer matches main in the shared repo). So, Alice merges the add-style branch into the main branch by running git merge --ff-only to perform a fast-forward merge. Then, Alice pushes main from their repo to the shared repo.
+
+Bash
+
+Copy
+git merge --ff-only add-style
+git push
+
+In this case, a fast-forward merge wasn't strictly necessary because the main branch had no changes, and Git would have merged the changes anyway. But using the --ff only flag is a good practice because an --ff-only merge fails if main has changed.
+
