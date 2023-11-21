@@ -76,3 +76,81 @@ This reverts commit 15d3bded388470c98881a632025bc15190fe9d17.
 Finally, open the index.html file to make sure the content is the correct version.
 
 Reverting isn't the only way to remedy this situation; you could just edit index.html and commit the corrected file. That option is harder if the changes you committed were extensive. In any case, git revert is a good way to signal your intent.
+Now, let's make things more complicated. Suppose you accidentally overwrite one file with another file, or you make a change to a file that turns out to be a big mistake. You want to revert to the previous version of the file, but you had already committed the changes. In this case, a simple git checkout won't do the trick.
+
+One solution to this problem is to revert the previous commit.
+
+Open index.html with code:
+
+Bash
+
+Copy
+code index.html
+Replace the contents of index.html with this code:
+
+HTML
+
+Copy
+<h1>That was a mistake!</h1>
+Save and close the file.
+
+Use these commands to commit the changes, and show the latest commit:
+
+Bash
+
+Copy
+git commit -m "Purposely overwrite the contents of index.html" index.html
+git log -n1
+The -n1 flag here tells Git that we want only the most recent commit entry.
+
+Use the following commands to attempt to restore index.html:
+
+Bash
+
+Copy
+git checkout -- index.html
+Open index.html in the editor:
+
+Bash
+
+Copy
+code index.html
+Which version of index.html do you see? The old version or the new version?
+
+In this situation, the best course of action is to revert the change by making another commit that cancels out the first one. That's a job for git revert.
+
+Close the file and use git revert to undo your committed changes:
+
+Bash
+
+Copy
+git revert --no-edit HEAD
+The --no-edit flag tells Git that we don't want to add a commit message for this action.
+
+Check the output. It should look similar to this example:
+
+Output
+
+Copy
+[main 6a27310] Revert "Purposely overwrite the contents of index.html"
+1 file changed, 13 insertions(+), 1 deletion(-)
+Follow up with a git log command to show the latest commit:
+
+Bash
+
+Copy
+git log -n1
+Check the output again. It should look like this example:
+
+Output
+
+Copy
+Author: User Name <user-name@contoso.com>
+Date:   Tue Nov 19 23:42:26 2019 +0000
+
+Revert "Purposely overwrite the contents of index.html"
+
+This reverts commit 15d3bded388470c98881a632025bc15190fe9d17.
+Finally, open the index.html file to make sure the content is the correct version.
+
+Reverting isn't the only way to remedy this situation; you could just edit index.html and commit the corrected file. That option is harder if the changes you committed were extensive. In any case, git revert is a good way to signal your intent.
